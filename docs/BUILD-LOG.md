@@ -29,4 +29,6 @@ Running log of how this gets built, kept live for the accompanying essay. Number
 
 **Naming (evolved over one evening, kept for the record):** repo briefly `vouchtube` (the signal is human *vouches*), renamed to **tcgtube** on Tom's call — name each thing after what it is. Umbrella product = **The Vault** at `vault.tmrss.co`: one domain, hub page, `/tcg` and `/pm` sections with per-section RSS. Two subdomains died in favor of one door each.
 
+**Design (settled 2 Nov, after sketch rounds):** five variants were sketched (~/.hermes/workspace/tcgtube/sketches/): three invented takes (noir / quiet index / tool dense) — Tom's verdict: "too AI generated UI wise, bit ugly." Lesson recorded: don't invent UI; copy real systems. Rebuilt as two faithful copies — 004-youtube-calm (Karpathy's actual HackerTube CSS: white/#0f0f0f/#ff6600) and 005-macwright-vault (macwright.com's real tokens, Tom's chosen lineage for tmrss.co). Tom's call: **hybrid — layout of 004, color/style of 005.** = 006-hybrid: sticky header, filter text-links (active = madder red #B44240 box), 4-col thumbnail grid, serif underlined titles (red on hover), serif why-blurbs, mono metadata with red vouch counts, square corners, zero shadows/pills/rounded cards. THE target look.
+
 **Next:** stand up the TCG mining against the Reddit dumps → first real vouch counts → then enrichment + site.
