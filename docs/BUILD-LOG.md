@@ -17,7 +17,7 @@ Running log of how this gets built, kept live for the accompanying essay. Number
 **Product decisions:**
 
 - One engine, two corpora (TCG first, PM second — second should be a config change, not a rebuild).
-- Hosting: existing Cloudflare setup, subdomains `tcg.tmrss.co` / `pm.tmrss.co`. Free, push-to-deploy. A standalone domain can come later without rebuilding.
+- Hosting: existing Cloudflare setup, subdomains `tcg.tmrss.co` / `pm.tmrss.co`. Free, push-to-deploy. A standalone domain can come later without rebuilding. *(Superseded same evening — see Naming below: one domain, vault.tmrss.co.)*
 - Each corpus publishes an **RSS feed** (weekly digest of newly-vouched videos) — subscribe in Readwise Reader. Push distribution for a static site, zero ongoing cost.
 - Filters: by game/topic, by content type (learning / gameplay / openings), minimum vouch count, no Shorts (<60s via API duration).
 - Openings will be the thinnest category by construction — Redditors rarely vouch for opening videos. The ones they do vouch for are the legends. That's fine; it's a feature of "human vouches" as a signal, not a bug.
