@@ -1,4 +1,4 @@
-# VouchTube
+# TCGTube
 
 **Community-vouched video recommendations** — an algorithm-free index of videos that people actually recommend to each other.
 

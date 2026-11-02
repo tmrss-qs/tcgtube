@@ -1,4 +1,4 @@
-# VouchTube — Plan
+# TCGTube — Plan
 
 ## Target output (per corpus)
 

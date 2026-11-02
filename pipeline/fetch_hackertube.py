@@ -4,7 +4,7 @@
 His site exposes the full enriched dataset at /api/list, 30 videos per call,
 paged with ?offset=. This pulls everything and saves one JSON array.
 
-Used as the schema blueprint for VouchTube's own enrichment format.
+Used as the schema blueprint for TCGTube's own enrichment format.
 """
 import json
 import os

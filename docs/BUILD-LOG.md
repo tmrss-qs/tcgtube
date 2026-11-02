@@ -1,4 +1,4 @@
-# VouchTube — Build Log
+# TCGTube — Build Log
 
 Running log of how this gets built, kept live for the accompanying essay. Numbers here are measured, not vibes.
 
