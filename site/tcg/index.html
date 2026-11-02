@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vault — TCG</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--mono:"Berkeley Mono","JetBrains Mono","SF Mono",Monaco,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"avenir next",avenir,helvetica,arial,sans-serif;--serif:Georgia,serif;--bg:#fff;--text:#111;--dim:#555;--accent:#B44240;--line:#eee}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased}
+.top{border-bottom:2px solid var(--text);padding:26px 0 14px;position:sticky;top:0;background:var(--bg);z-index:5}
+.topin{max-width:1096px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px}
+.brand{font-weight:700;font-size:22px}
+.brand small{font-family:var(--serif);color:var(--dim);font-weight:400;font-size:.85rem;margin-left:12px}
+nav a{color:var(--text);text-decoration:underline;text-decoration-skip-ink:auto;font-size:.9rem;margin-left:16px}
+nav a.on{font-weight:700}
+.main{max-width:1096px;margin:0 auto;padding:14px 24px 70px}
+.filters{margin:10px 0 4px;font-size:.9rem}
+.filters a{color:var(--text);text-decoration:underline;text-decoration-skip-ink:auto;margin-right:13px;cursor:pointer}
+.filters a.on{font-weight:700;text-decoration:none;background:var(--accent);color:#fff;padding:1px 6px}
+.count{font-family:var(--mono);font-size:.75rem;color:var(--dim);margin:10px 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:30px 20px}
+.v{cursor:pointer}
+.thumb{position:relative;aspect-ratio:16/9;border:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;background:var(--line)}
+.dur{position:absolute;right:5px;bottom:5px;background:rgba(17,17,17,.85);color:#fff;font-family:var(--mono);font-size:.68rem;padding:1px 5px}
+.t{font-family:var(--serif);font-size:1.02rem;line-height:1.35;margin-top:10px;text-decoration:underline;text-decoration-skip-ink:auto;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.v:hover .t{background:var(--accent);color:#fff}
+.why{font-family:var(--serif);font-size:.86rem;color:var(--dim);margin-top:5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.m{font-family:var(--mono);font-size:.72rem;color:var(--dim);margin-top:7px}
+.m b{color:var(--accent);font-weight:400}
+.foot{margin-top:52px;font-family:var(--mono);font-size:.75rem;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:640px){.main{padding:10px 14px 60px}.topin{padding:0 14px}.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:22px 12px}}
+</style></head><body>
+<div class="top"><div class="topin"><div class="brand">The Vault <small>videos people actually vouch for — no algorithm, no Shorts</small></div><nav><a class="on" href="/tcg/">TCG</a><a href="/pm/">Product</a><a href="/tcg/rss.xml">RSS</a></nav></div></div>
+<div class="main">
+<div class="filters" id="chips"></div>
+<div class="count" id="meta"></div>
+<div class="grid" id="grid"></div>
+<div class="foot">The Vault — community-vouched TCG videos, mined from 20 years of Reddit (2005–2025). vault.tmrss.co</div>
+</div>
+<script src="data.js"></script>
+<script>
+const TOPICS=["FAB", "General", "Lorcana", "MTG", "Pokemon", "Yu-Gi-Oh"],TYPES=["commentary", "gameplay", "learning", "other", "review", "talk"];
+let actT=new Set(),actC=new Set(),minV=0,q='';
+const chips=document.getElementById('chips'),grid=document.getElementById('grid'),meta=document.getElementById('meta');
+function mk(label,on,fn,group){const b=document.createElement('a');b.className=on?'on':'';b.textContent=label;b.onclick=()=>{fn();render()};return b}
+function render(){
+ chips.innerHTML='';
+ chips.appendChild(mk('everything',actT.size===0,()=>{actT.clear()}));
+ TOPICS.forEach(t=>chips.appendChild(mk(t,actT.has(t),()=>{actT.has(t)?actT.delete(t):actT.add(t)})));
+ chips.appendChild(mk('||',false,()=>{}));
+ TYPES.forEach(t=>chips.appendChild(mk(t,actC.has(t),()=>{actC.has(t)?actC.delete(t):actC.add(t)})));
+ const rows=DATA.filter(c=>(actT.size===0||actT.has(c.topic))&&(actC.size===0||actC.has(c.content_type))&&c.vouchers>=minV);
+ meta.textContent=rows.length+' / '+DATA.length+' videos · sorted by vouches · Shorts excluded';
+ grid.innerHTML=rows.map(c=>{const m=Math.floor(c.duration_s/60),s=String(c.duration_s%60).padStart(2,'0');return `<div class="v"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${c.video_id}/mqdefault.jpg"><span class="dur">${m}:${s}</span></div><a class="t" href="https://www.youtube.com/watch?v=${c.video_id}" target="_blank" rel="noopener">${c.title}</a><div class="why">${c.why}</div><div class="m"><b>${c.vouchers} vouches</b> · ${c.channel} · ${c.topic} · ${c.content_type}</div></div>`}).join('');
+}
+render();
+</script></body></html>

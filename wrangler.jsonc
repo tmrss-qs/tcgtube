@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vault",
+  "account_id": "fe4f43117a763c442c916860cf65bbdf",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./site"
+  },
+  "routes": [
+    { "pattern": "vault.tmrss.co", "custom_domain": true }
+  ]
+}

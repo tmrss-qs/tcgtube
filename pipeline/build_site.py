@@ -30,6 +30,8 @@ TOPIC_RULES = [
     ("FAB", re.compile(r"flesh and blood|flesh & blood|leonis|blitz deck|\bfab\b", re.I)),
     ("General", re.compile(r".")),
 ]
+# Joke links that aren't real vouches (rickroll etc.)
+DENY = {"dQw4w9WgXcQ"}
 TYPE_RULES = [
     ("learning", re.compile(r"how to|learn|beginner|guide|tutorial|explained|rules|tips|basics|introduction|primer", re.I)),
     ("gameplay", re.compile(r"gameplay|match|v\.? ?\?|vs\.? |versus|matchup|game |round \d|topdeck|combo", re.I)),
@@ -90,7 +92,7 @@ def rss(entries, out_path):
 
 def main():
     with open(os.path.join(ROOT, "data", "enriched.json")) as fh:
-        recs = json.load(fh)
+        recs = [r for r in json.load(fh) if r["video_id"] not in DENY]
     for r in recs:
         t, c = label(r)
         r["topic"], r["content_type"] = t, c
