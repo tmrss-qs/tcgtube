@@ -36,7 +36,7 @@ def main():
                 mentions[vid] += 1
                 by_author[vid].add(rec["author"])
                 by_sub[vid].add(rec["subreddit"])
-                ts = rec.get("created_utc") or 0
+                ts = int(rec.get("created_utc") or 0)
                 if vid not in first_seen or ts < first_seen[vid]:
                     first_seen[vid] = ts
                 if vid not in last_seen or ts > last_seen[vid]:
