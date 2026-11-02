@@ -1,0 +1,19 @@
+# secrets — never commit
+.env
+.env.*
+
+# data — fetched/regenerated, not checked in
+data/
+*.zst
+*.jsonl
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node / build
+node_modules/
+dist/
+.wrangler/
+.DS_Store
