@@ -24,7 +24,9 @@ Running log of how this gets built, kept live for the accompanying essay. Number
 
 **Infra decisions:**
 
-- Public repo from day one (github.com/tmrss-qs/vouchtube), MIT, no keys in the repo — YouTube API key via `.env`.
+- Public repo from day one (github.com/tmrss-qs/tcgtube), MIT, no keys in the repo — YouTube API key via `.env`.
 - Build on the Mac mini (M4, 24GB). Watch disk: full Arctic Shift monthly dumps are 50GB+ each — use per-subreddit files / parquet queries, not whole-month downloads.
+
+**Naming (evolved over one evening, kept for the record):** repo briefly `vouchtube` (the signal is human *vouches*), renamed to **tcgtube** on Tom's call — name each thing after what it is. Umbrella product = **The Vault** at `vault.tmrss.co`: one domain, hub page, `/tcg` and `/pm` sections with per-section RSS. Two subdomains died in favor of one door each.
 
 **Next:** stand up the TCG mining against the Reddit dumps → first real vouch counts → then enrichment + site.

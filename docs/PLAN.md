@@ -1,13 +1,14 @@
 # TCGTube — Plan
 
-## Target output (per corpus)
+## Target output
 
-A static site at `tcg.tmrss.co` (TCG) / `pm.tmrss.co` (PM):
+A static site at **vault.tmrss.co** ("The Vault"):
 
-- Grid of videos, each with: title, channel, duration, representative mid-video thumbnail, vouch count, `why` blurb, topic + content-type tags, link out to YouTube.
-- Filters: topic (MTG / Pokémon / YGO / Lorcana / FAB / …), content type (learning / gameplay / opening / review / talk / podcast), level, duration bucket, minimum vouches, recency.
+- Hub page that routes to each corpus: `/tcg` and `/pm`.
+- Per corpus, a grid of videos, each with: title, channel, duration, representative mid-video thumbnail, vouch count, `why` blurb, topic + content-type tags, link out to YouTube.
+- Filters: topic (MTG / Pokémon / YGO / Lorcana / FAB / …), content type (learning / gameplay / opening / review / talk), level, duration bucket, minimum vouches, recency.
 - No logins; likes/history state stays in `localStorage` if we add it at all.
-- `/rss.xml`: weekly digest of newly-vouched videos (title + why-blurb + link).
+- Per-corpus RSS (`/tcg/rss.xml`, `/pm/rss.xml`): weekly digest of newly-vouched videos (title + why-blurb + link).
 
 ## Pipeline stages
 

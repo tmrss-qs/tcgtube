@@ -6,12 +6,14 @@ YouTube's recommendation system optimizes for engagement. This project instead m
 
 Inspired by Andrej Karpathy's [HackerTube](https://hackertube.org/). He built the HN version in a weekend and published the underlying data; his enrichment schema (`why` it gets recommended, `content_type`, `level`, `shelf_life`, tags) is this project's blueprint.
 
-## Corpora
+## The Vault — vault.tmrss.co
 
-| Corpus | Source subreddits | Status |
-|---|---|---|
-| **TCG** — tcg.tmrss.co | r/magicTCG, r/EDH, r/mtgfinance, r/PokemonTCG, r/yugioh, r/lorcana, … | building |
-| **PM** — pm.tmrss.co | r/ProductManagement + friends | next (same engine, different config) |
+One domain, two doors. The hub page routes you to each corpus; each corpus has its own filters and its own RSS feed (`/tcg/rss.xml`, `/pm/rss.xml` — subscribe in Readwise Reader or any RSS app).
+
+| Corpus | Path | Source subreddits | Status |
+|---|---|---|---|
+| **TCG** | `vault.tmrss.co/tcg` | r/magicTCG, r/EDH, r/mtgfinance, r/PokemonTCG, r/yugioh, r/lorcana, … | building |
+| **Product** | `vault.tmrss.co/pm` | r/ProductManagement + friends | next (same engine, different config) |
 
 Measured reality (2026-11 probes): HN alone is too thin for PM content (~70 relevant comments ever) and for TCG (only ~47 of HackerTube's 6,454 videos are game-adjacent) — so both corpora need their own Reddit mining. Karpathy's dataset is the schema reference, not the content.
 

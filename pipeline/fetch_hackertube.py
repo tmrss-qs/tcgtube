@@ -20,7 +20,7 @@ def fetch_page(offset: int, retries: int = 3, timeout: int = 30) -> list:
     url = f"{BASE}?offset={offset}"
     for attempt in range(retries):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "vouchtube/0.1"})
+            req = urllib.request.Request(url, headers={"User-Agent": "tcgtube/0.1"})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode())
         except Exception:
