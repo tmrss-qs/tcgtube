@@ -1,0 +1,46 @@
+# Weekly refresh — MANUAL ONLY. No schedule is enabled and no secrets are added.
+# To turn on later (Tom's call): add `schedule: - cron: "0 20 * * 0"` and,
+# optionally, repo secrets YOUTUBE_API_KEY / OPENAI_API_KEY.
+# This job never deploys and never pushes; it uploads the built site + corpus
+# as an artifact for a human to review.
+name: refresh (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      full_mine:
+        description: "Full re-mine (hours) instead of last 2 months"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }   # import_legacy reads site/tcg/data.js from history
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/cache@v4
+        with:
+          path: data
+          key: tcgtube-data-${{ github.run_id }}
+          restore-keys: tcgtube-data-
+      - run: python -m venv .venv && .venv/bin/pip install -q -r requirements.txt
+      - run: make test
+      - name: mine + rank + build
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TCGTUBE_LLM_PROVIDER: ${{ vars.TCGTUBE_LLM_PROVIDER }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ inputs.full_mine }}" = "true" ]; then .venv/bin/python pipeline/mine_arctic.py; fi
+          ./scripts/refresh.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tcgtube-site
+          path: |
+            site
+            corpus

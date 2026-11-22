@@ -1,0 +1,38 @@
+# TCGTube corpus config. One corpus (TCG). The PM corpus is parked (see config/pm.yaml.parked).
+name: TCGTube
+base_url: https://vault.tmrss.co   # placeholder domain, not deployed
+tagline: Videos the TCG community keeps telling each other to watch.
+
+# Subreddits mined via the Arctic Shift API (no key). Order = mining priority.
+subreddits:
+  - {name: FleshandBloodTCG, game: FAB,      start: 2019-06}
+  - {name: Lorcana,          game: Lorcana,  start: 2022-08}
+  - {name: OnePieceTCG,      game: One Piece, start: 2022-01}
+  - {name: pkmntcg,          game: Pokemon,  start: 2012-01}
+  - {name: PokemonTCG,       game: Pokemon,  start: 2010-01}
+  - {name: Pauper,           game: MTG,      start: 2011-01}
+  - {name: Spikes,           game: MTG,      start: 2011-01}
+  - {name: CompetitiveEDH,   game: MTG,      start: 2014-01}
+  - {name: lrcast,           game: MTG,      start: 2015-01}
+  - {name: yugioh,           game: Yu-Gi-Oh, start: 2009-01}
+  - {name: EDH,              game: MTG,      start: 2010-01}
+  - {name: magicTCG,         game: MTG,      start: 2008-01}
+
+# HackerTube-style qualification
+ranking:
+  min_vouchers: 3          # distinct people recommending
+  min_months: 3            # in distinct calendar months
+  count_stances: [recommend, cite]   # stances that count as a vouch
+  dated_after_years: 2     # dated content (deck techs, set reviews, finance) older than this is hidden by default
+
+# Conflict-of-interest rule (DRAFT, Tom to confirm): never list Tom's own channel.
+exclude_channels:
+  handles: ["@tmrss"]
+  names: ["tmrss"]
+
+# Joke links that are never vouches.
+deny_video_ids: [dQw4w9WgXcQ, oHg5SJYRHA0]
+
+bot_authors: [AutoModerator, MTGCardFetcher, VideoLinkBot, youtubefactsbot, timestamp_bot, RemindMeBot, sneakpeekbot, WikiTextBot, Mentioned_Videos, video_descriptionbot, LegacyCardFetcher, PokeUpdateBot, "[deleted]"]
+
+shelf_file: config/shelves.yaml
