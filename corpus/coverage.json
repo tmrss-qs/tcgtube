@@ -1,0 +1,145 @@
+[
+ {
+  "subreddit": "FleshandBloodTCG",
+  "game": "FAB",
+  "start": "2019-06",
+  "windows_done": 58,
+  "windows_expected": 58,
+  "windows_failed": 0,
+  "complete": true,
+  "links": 1278,
+  "by_year": {
+   "2021": 100,
+   "2022": 188,
+   "2023": 209,
+   "2024": 284,
+   "2025": 311,
+   "2026": 186
+  }
+ },
+ {
+  "subreddit": "Lorcana",
+  "game": "Lorcana",
+  "start": "2022-08",
+  "windows_done": 35,
+  "windows_expected": 102,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 188,
+  "by_year": {
+   "2022": 1,
+   "2023": 165,
+   "2024": 22
+  }
+ },
+ {
+  "subreddit": "OnePieceTCG",
+  "game": "One Piece",
+  "start": "2022-01",
+  "windows_done": 0,
+  "windows_expected": 116,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "pkmntcg",
+  "game": "Pokemon",
+  "start": "2012-01",
+  "windows_done": 0,
+  "windows_expected": 356,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "PokemonTCG",
+  "game": "Pokemon",
+  "start": "2010-01",
+  "windows_done": 0,
+  "windows_expected": 404,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "Pauper",
+  "game": "MTG",
+  "start": "2011-01",
+  "windows_done": 0,
+  "windows_expected": 380,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "Spikes",
+  "game": "MTG",
+  "start": "2011-01",
+  "windows_done": 0,
+  "windows_expected": 380,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "CompetitiveEDH",
+  "game": "MTG",
+  "start": "2014-01",
+  "windows_done": 0,
+  "windows_expected": 308,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "lrcast",
+  "game": "MTG",
+  "start": "2015-01",
+  "windows_done": 0,
+  "windows_expected": 284,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "yugioh",
+  "game": "Yu-Gi-Oh",
+  "start": "2009-01",
+  "windows_done": 8,
+  "windows_expected": 428,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "EDH",
+  "game": "MTG",
+  "start": "2010-01",
+  "windows_done": 0,
+  "windows_expected": 404,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ },
+ {
+  "subreddit": "magicTCG",
+  "game": "MTG",
+  "start": "2008-01",
+  "windows_done": 0,
+  "windows_expected": 452,
+  "windows_failed": 0,
+  "complete": false,
+  "links": 0,
+  "by_year": {}
+ }
+]

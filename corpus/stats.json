@@ -1,0 +1,32 @@
+{
+ "built": "2026-11-22",
+ "videos": 3531,
+ "by_game": {
+  "MTG": 2707,
+  "Yu-Gi-Oh": 554,
+  "Pokemon": 136,
+  "FAB": 112,
+  "Lorcana": 22
+ },
+ "legacy_fallback": 3514,
+ "complete_games": [],
+ "raw_link_comments": 1466,
+ "stances": {
+  "cite": 966,
+  "recommend": 428,
+  "criticize": 2,
+  "self_promo": 63,
+  "bot": 1,
+  "joke": 6
+ },
+ "drops": {
+  "music_meme": 848,
+  "legacy_below_bar_or_game_remined": 9842
+ },
+ "stance_source": "heuristic",
+ "meta_sources": {
+  "yt-api-2026-11-02": 3530,
+  "oembed": 1
+ },
+ "rule": ">= 3 distinct people in >= 3 distinct months"
+}

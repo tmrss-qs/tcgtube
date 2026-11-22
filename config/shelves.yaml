@@ -1,0 +1,183 @@
+# Curated shelves. DRAFT: auto-seeded from the rankings on build day for Tom to edit.
+# Edit freely: reorder, swap ids, add a one-line `note`, set `draft: false` when a shelf is yours.
+# `_title` is a reminder only (ignored by the build).
+shelves:
+- slug: learn-magic
+  title: Learn Magic in six videos
+  intro: From never played to sitting down at a draft table.
+  draft: true
+  videos:
+  - id: wif9ppH5JpI
+    note: null
+    _title: 'How To Play Magic: The Gathering (MTG) Learn To Play In About 15 Minutes!'
+  - id: ZixWqaGJVQs
+    note: null
+    _title: 'How to Play Magic: the Gathering'
+  - id: vzSz5RJ6gu0
+    note: null
+    _title: 'How To Start Playing Magic: The Gathering - A Beginner''s Guide To MTG'
+  - id: 1wyncg5Xhmg
+    note: null
+    _title: 'MTG - Introduction to Sealed Deck Construction 101 - For Magic: The Gathering Prerelease and Launch'
+  - id: 1jO2fmsef0g
+    note: null
+    _title: 'How To Build Your First Commander Deck | Magic: The Gathering'
+  - id: fUqPxSYPfrA
+    note: null
+    _title: 'MTG - The New Player''s Guide To Drafting Magic: The Gathering Cards'
+- slug: commander-canon
+  title: The Commander canon
+  intro: The deckbuilding and table-politics videos EDH players keep pointing each other to.
+  draft: true
+  videos:
+  - id: OSNV6224cHg
+    note: null
+    _title: Commander Deckbuilding Template for the New Era | The Command Zone 658 | MTG EDH Magic Gathering
+  - id: UleH4wxzONA
+    note: null
+    _title: 'MTG - How To Build a 5 Color EDH / Commander Mana Base for Magic: The Gathering'
+  - id: ceILMLrNCGw
+    note: null
+    _title: How to be a Greedy Bastard in EDH (and get away with it)
+  - id: ifig4xSp0kA
+    note: null
+    _title: 'MTG - How To Build a 3 Color EDH / Commander Mana Base for Magic: The Gathering'
+  - id: Gbphr57jysI
+    note: null
+    _title: MTG - Introduction To Commander Deck Construction - How To Build EDH
+  - id: co25vcPvDsE
+    note: null
+    _title: 'The Power of Priority (and The Stack) | The Command Zone 267 | Magic: the Gathering EDH'
+  - id: zhm179k6oyk
+    note: null
+    _title: 'How To Irritate Magic: The Gathering Players at Commander: Zo-Zu The Punisher EDH'
+  - id: s9C7JdSRZGc
+    note: null
+    _title: 'How To Build Every Commander Mana Base | The Definitive Guide | Magic: The Gathering'
+- slug: coverage-moments
+  title: Coverage moments people still link
+  intro: Matches and plays that come up in threads years after they happened.
+  draft: true
+  videos:
+  - id: jkwLJjBGzEE
+    note: null
+    _title: SCGLA - Legacy - Round 3 - Gregory Hatch vs Chris Kapica
+  - id: CmB0nlpz_2Y
+    note: null
+    _title: 'Instant Classic: Nassif vs. Chapin'
+  - id: jedseuxEvxk
+    note: null
+    _title: 'Pro Tour Dark Ascension: Top 8 Semifinals'
+  - id: SZDaM4VpSBk
+    note: null
+    _title: 'Pro Tour Return to Ravnica: Finals'
+  - id: KmouDgc9hD8
+    note: null
+    _title: 'Day[9] vs. Rob Simpson in Magic: The Gathering: Spellslingers Episode 1'
+  - id: ybOKEUhCvDo
+    note: null
+    _title: SCGCIN - Leg - Rd 5 - Gerry Thompson vs Andrew Tompkins
+  - id: O1ueErB8bms
+    note: null
+    _title: Pro Tour Magic 2015 - Quarterfinals - Yuuki Ichikawa vs. Jackson Cunningham
+  - id: LQMmmZgTL_Q
+    note: null
+    _title: 'SCGINVI - Deck Tech: Artificer''s Intuition with Greg Hatch'
+- slug: fab-from-zero
+  title: Flesh and Blood from zero
+  intro: Rules, classes and the value math, in a sensible order.
+  draft: true
+  videos:
+  - id: 3KFP_ESRz54
+    note: null
+    _title: How To Play Flesh And Blood (TCG) Learn To Play In Less Than 15 minutes!
+  - id: 8Wk78rhLdlA
+    note: null
+    _title: Which FaB Class Should You Play?
+  - id: 9F_HLRlZM-g
+    note: null
+    _title: How to Determine Value in FaB
+  - id: 7AbaxIgGYoo
+    note: null
+    _title: Flesh and Blood is a Fighting Game
+  - id: 416k-Rs8hgQ
+    note: null
+    _title: Flesh and Blood TCG - Learn to Play
+  - id: ft-Qs-hQFwg
+    note: null
+    _title: The Value of a Card | FAB Foundations, Ep. 1
+- slug: pokemon-cards
+  title: 'Pokémon cards: storing, grading, not getting scammed'
+  intro: For collectors more than players.
+  draft: true
+  videos:
+  - id: gs6mQ5J6Q7s
+    note: null
+    _title: The CORRECT Way To Store Pokemon Cards in a Binder
+  - id: ZWZAx59eQOs
+    note: null
+    _title: How did Pokemon TCG get here?
+  - id: hf1cjsoQRRs
+    note: null
+    _title: Shaking Graded Pokemon Cards Causes DAMAGE?! Let’s Find Out
+  - id: 3mYqTFQjx0s
+    note: null
+    _title: All Current Pokémon TCG Rarities Explained (Scarlet & Violet)
+  - id: f5Qj6MigyRo
+    note: null
+    _title: How to order Japanese Pokemon Card 151 & Pokemon Products from Pokemon Center Japan!
+  - id: j7hkmrk63xc
+    note: null
+    _title: Digitally Peeking Inside a Pack of Pokemon Cards
+- slug: essays
+  title: Long reads, but videos
+  intro: Essays, design talks and histories worth an evening.
+  draft: true
+  videos:
+  - id: QHHg99hwQGY
+    note: null
+    _title: '''Magic: the Gathering'': 20 Years, 20 Lessons Learned'
+  - id: TcNWXRpUM-E
+    note: null
+    _title: 'The Entire Story of Magic: the Gathering'
+  - id: dDVrAb_GfxU
+    note: null
+    _title: 'How to Power-up Your Decks | The Command Zone 217 | Magic: the Gathering Commander/EDH Podcast'
+  - id: fVVdPzuKz1o
+    note: null
+    _title: THE MOST EXPENSIVE COMMANDER GAME IN MTG HISTORY ft. Arin Hanson & Voxy | Mulligan's Episode 6
+  - id: U6LnVOV1SX8
+    note: null
+    _title: 'Yawgmoth: The Scientific Priestcraft of Eugenics | Magic the Gathering Lore | Spice 8 Rack'
+  - id: ZP61wUYPs_M
+    note: null
+    _title: 'The Complete History of the Yu-Gi-Oh! Meta: Part 1 (2002-2005)'
+  - id: 4GeR1xraPxU
+    note: null
+    _title: 'The Importance of MANA CURVE | The Command Zone 156 | Magic: the Gathering Commander/EDH Podcast'
+  - id: OSuoebFLSnE
+    note: null
+    _title: Yu-Gi-Oh! The COMPLETE World Legacy Lore and More 2020!! Yu-Gi-Lore w/ Logan!
+- slug: newer-games
+  title: Starting Lorcana, One Piece or Yu-Gi-Oh!
+  intro: The first videos people recommend for the other big games.
+  draft: true
+  videos:
+  - id: s1QsMX9MwHA
+    note: null
+    _title: How To Play Yu-Gi-Oh! in 2020!
+  - id: DTo7pE5CJn0
+    note: null
+    _title: Yu-Gi-Oh! The Idiots Guide To Link Summoning (Link Monsters, New Field, Extra Monster Zone)
+  - id: 55gsu3_36Fs
+    note: null
+    _title: How To Play Yu-Gi-Oh in 3 Minutes!
+  - id: m3Kaq_Q4ktc
+    note: null
+    _title: Yu-Gi-Oh! The Idiots Guide To Summoning (Normal, Ritual, Fusion, Synchro, Xyz, Pendulum)
+  - id: le3afxMnmd8
+    note: null
+    _title: Learn To Play Disney Lorcana w/Co-Designer Ryan Miller
+  - id: 8jqRznO0NdU
+    note: null
+    _title: Yu-Gi-Oh! TRADING CARD GAME Official Rules Update - July 21st, 2017

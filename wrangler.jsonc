@@ -4,7 +4,8 @@
   "account_id": "fe4f43117a763c442c916860cf65bbdf",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./site"
+    "directory": "./site",
+    "not_found_handling": "404-page"
   },
   "routes": [
     { "pattern": "vault.tmrss.co", "custom_domain": true }

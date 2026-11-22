@@ -17,3 +17,7 @@ node_modules/
 dist/
 .wrangler/
 .DS_Store
+logs/
+
+# build output (make build)
+site/

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Mine vouches: extract every YouTube recommendation from subreddit dump files.
 
+Alternative to mine_arctic.py when you have the dumps locally (e.g. on the mini).
 Input:  Watchful1/Arctic Shift per-subreddit dumps (.zst NDJSON) in data/reddit/
 Output: data/vouches/<subreddit>.jsonl — one record per YouTube link occurrence:
         {video_id, kind: comment|submission, author, created_utc, score, id,
@@ -17,11 +18,9 @@ import re
 import sys
 import zstandard as zstd
 
-# YouTube link patterns -> extract 11-char video id
-YT_RE = re.compile(
-    r"(?:https?://)?(?:www\.|m\.)?(?:youtube\.com/(?:watch\?[^ \]\)>]*v=|live/|embed/|shorts/)|youtu\.be/)"
-    r"([A-Za-z0-9_-]{11})"
-)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import YT_RE  # noqa: E402  (shared, stricter regex)
+
 
 BAD_ID_PREFIXES = ("GOLD", "SILV")  # improbable; kept for future junk filters
 

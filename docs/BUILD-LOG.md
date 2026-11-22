@@ -32,3 +32,24 @@ Running log of how this gets built, kept live for the accompanying essay. Number
 **Design (settled 2 Nov, after sketch rounds):** five variants were sketched (~/.hermes/workspace/tcgtube/sketches/): three invented takes (noir / quiet index / tool dense) — Tom's verdict: "too AI generated UI wise, bit ugly." Lesson recorded: don't invent UI; copy real systems. Rebuilt as two faithful copies — 004-youtube-calm (Karpathy's actual HackerTube CSS: white/#0f0f0f/#ff6600) and 005-macwright-vault (macwright.com's real tokens, Tom's chosen lineage for tmrss.co). Tom's call: **hybrid — layout of 004, color/style of 005.** = 006-hybrid: sticky header, filter text-links (active = madder red #B44240 box), 4-col thumbnail grid, serif underlined titles (red on hover), serif why-blurbs, mono metadata with red vouch counts, square corners, zero shadows/pills/rounded cards. THE target look.
 
 **Next:** stand up the TCG mining against the Reddit dumps → first real vouch counts → then enrichment + site.
+
+## 2026-11-22 — v2 quality pass (branch `v2/quality-pass`)
+
+**Why:** an assessment of v1 scored it 3/10. The site never went live (no DNS record). Every link counted as a vouch, the self-promo discount was a no-op, the "why" was a raw Reddit snippet with URLs, titles rendered in browser blue, thumbnails were clickbait, all 14k cards were in one DOM, and Reddit text went into `innerHTML` unescaped.
+
+**What changed:**
+- **Ranking:** the HackerTube rule, ≥3 distinct people in ≥3 distinct months, ranked by distinct months.
+  - Stance labels: heuristic now, LLM-pluggable.
+  - Removed: bots, self-links and channel promoters, music and memes, Shorts, dead videos.
+  - Excluded Tom's channel (COI rule).
+  - Per-game normalisation.
+- **Taxonomy:** game → format → type → level → rotation-aware shelf life.
+- **Data source:** Arctic Shift API instead of torrents (no key; paced because the shared API rate-limits with "Timeout. Maybe slow down a bit"). Coverage is published at /coverage. Games whose subreddits aren't fully re-mined fall back to the v1 counts, marked "first pass".
+- **Data hygiene:** the public corpus has IDs, counts and quotes of ≤200 chars with permalinks. No usernames. `site/` is now build output, not committed.
+- **Site:**
+  - Escaping everywhere, ink-coloured serif titles, and mid-video frames (`hq2.jpg`).
+  - Pagination (48 per page), search (`/` focuses it), URL-state filters, a length filter, and a collapsible mobile filter panel.
+  - OG tags, per-video pages with a click-to-load youtube-nocookie embed, Shelves (DRAFT), About (method, opt-out, COI), Coverage, and a weekly RSS digest with real dates.
+- **Ops:** `make build`/`test`/`refresh`, pytest, and a manual-only GitHub Action. The YouTube key now comes from env (`YOUTUBE_API_KEY`); without one it falls back to oEmbed. The PM corpus is parked.
+
+**Measured:** see `corpus/stats.json` and `/coverage` for counts at build time.

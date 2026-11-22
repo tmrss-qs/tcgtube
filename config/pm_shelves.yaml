@@ -1,0 +1,106 @@
+# /pm — HAND-CURATED product management shelves. Nothing here is auto-mined or auto-published.
+# DRAFT starter picks (verified to exist via YouTube oEmbed on 2026-11-22) for Tom to edit:
+# reorder, delete, add ids, write a one-line `note`, set `draft: false` when a shelf is yours.
+# title/channel/duration are cached so the build needs no network; refresh with `make pm-verify`.
+# Reddit-mined PM suggestions go to data/pm_suggestions.md for review only (make pm-suggest).
+shelves:
+- slug: foundations
+  title: PM foundations
+  intro: What the job actually is, from people who have done it well for a long time.
+  draft: true
+  videos:
+  - id: YP_QghPLG-8
+    title: The art of product management | Shreyas Doshi (Stripe, Twitter, Google, Yahoo)
+    channel: Lenny's Podcast
+    duration_s: 5482
+    note: null
+  - id: gCYFmrvPI8Q
+    title: '"Product is Hard" by Inspired Author Marty Cagan of SVPG at Lean Product Meetup'
+    channel: Dan Olsen
+    duration_s: 6368
+    note: null
+  - id: 7h5lCPpccAA
+    title: 10x Not 10%  Product management by orders of magnitude by Ken Norton at Mind the Product 2015
+    channel: Mind the Product
+    duration_s: 2210
+    note: null
+  - id: 9N4ZgNaWvI0
+    title: Product management theater | Marty Cagan (Silicon Valley Product Group)
+    channel: Lenny's Podcast
+    duration_s: 5115
+    note: null
+- slug: discovery
+  title: Discovery
+  intro: 'Finding out what to build before you build it: customer interviews, jobs to be done, continuous discovery.'
+  draft: true
+  videos:
+  - id: l7-5x0ra2tc
+    title: Introduction to Modern Product Discovery - Teresa Torres
+    channel: Productized
+    duration_s: 2205
+    note: null
+  - id: Stc0beAxavY
+    title: 'Clay Christensen: The Jobs to be Done Theory'
+    channel: HubSpot Marketing
+    duration_s: 430
+    note: null
+  - id: FG1Fa-t4AEQ
+    title: Start-up advice & How to talk to customers with Rob Fitzpatrick (The Mom Test)
+    channel: Digital Product School
+    duration_s: 4024
+    note: null
+  - id: 9RFaz9ZBXpk
+    title: Build better products with continuous product discovery | Teresa Torres
+    channel: Lenny's Podcast
+    duration_s: 2898
+    note: null
+- slug: strategy
+  title: Strategy
+  intro: Diagnosis, guiding policy, and where durable advantage comes from.
+  draft: true
+  videos:
+  - id: UZrTl16hZdk
+    title: 'LSE Events | Prof. Richard Rumelt | Good Strategy/Bad Strategy: the difference and why it matters'
+    channel: LSE
+    duration_s: 5693
+    note: null
+  - id: x4H_gluZI10
+    title: '"Product Strategy: The Missing Link" by Inspired Author Marty Cagan of SVPG at Lean Product Meetup'
+    channel: Dan Olsen
+    duration_s: 6232
+    note: null
+  - id: 4EQzoXBsktI
+    title: Intro to Product Strategy w/ Gibson Biddle, former VP of Product at Netflix
+    channel: Product Collective (A Mind the Product Community)
+    duration_s: 4245
+    note: null
+  - id: hKq1_KPSqy0
+    title: Business strategy with Hamilton Helmer (author of 7 Powers)
+    channel: Lenny's Podcast
+    duration_s: 4088
+    note: null
+- slug: ai-product
+  title: AI product
+  intro: How LLMs work, how software is changing, and how to ship AI features that are actually good.
+  draft: true
+  videos:
+  - id: LCEmiRjPEtQ
+    title: 'Andrej Karpathy: Software Is Changing (Again)'
+    channel: Y Combinator
+    duration_s: 2372
+    note: null
+  - id: zjkBMFhNj_g
+    title: '[1hr Talk] Intro to Large Language Models'
+    channel: Andrej Karpathy
+    duration_s: 3588
+    note: null
+  - id: BsWxPI9UM4c
+    title: Why AI evals are the hottest new skill for product builders | Hamel Husain & Shreya Shankar
+    channel: Lenny's Podcast
+    duration_s: 6393
+    note: null
+  - id: scsW6_2SPC4
+    title: OpenAI’s CPO on how AI changes must-have skills, moats, coding, startup playbooks, more | Kevin Weil
+    channel: Lenny's Podcast
+    duration_s: 5501
+    note: null
