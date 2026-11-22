@@ -4,8 +4,9 @@ base_url: https://vault.tmrss.co   # placeholder domain, not deployed
 tagline: Videos the TCG community keeps telling each other to watch.
 
 # Subreddits mined via the Arctic Shift API (no key). Order = mining priority.
+# step = months per query window (default 1; windows auto-split when the API's ~10s query budget is hit).
 subreddits:
-  - {name: FleshandBloodTCG, game: FAB,      start: 2019-06}
+  - {name: FleshandBloodTCG, game: FAB,      start: 2019-06, step: 3}
   - {name: Lorcana,          game: Lorcana,  start: 2022-08}
   - {name: OnePieceTCG,      game: One Piece, start: 2022-01}
   - {name: pkmntcg,          game: Pokemon,  start: 2012-01}

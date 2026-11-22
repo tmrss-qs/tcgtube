@@ -82,8 +82,9 @@ def coverage(cfg, vouches, until):
         y, m = map(int, s["start"].split("-"))
         uy, um = map(int, until.split("-"))
         nmonths = (uy - y) * 12 + (um - m) + 1
-        step = int(next(iter(done)).split(":")[1]) if done else (1 if name in {"magicTCG", "EDH", "yugioh", "PokemonTCG"} else 3)
-        expected = math.ceil(nmonths / step) * 2 - 2  # current (incomplete) window excluded
+        step = s.get("step", 1)
+        nq = 2  # queries per window: youtu.be + youtube
+        expected = math.ceil(nmonths / step) * nq - nq  # current (incomplete) window excluded
         years = {k: v for k, v in sorted(by.get(name, {}).items())}
         rows.append({"subreddit": name, "game": s["game"], "start": s["start"], "windows_done": len(done),
                      "windows_expected": max(expected, 0), "windows_failed": len(failed),

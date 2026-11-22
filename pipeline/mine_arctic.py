@@ -43,11 +43,18 @@ def months(start, until):
             y, m = y + 1, 1
 
 
+SPLIT = "split"
+
+
 def get(params, log):
+    """Rows, None (gave up) or SPLIT (server query timeout: window too big).
+    The API has a ~10s query budget: a slow 'Timeout' means the window is too
+    expensive (split it); a fast one means we're being throttled (back off)."""
     url = API + "?" + urllib.parse.urlencode(params)
     delay = PACE
-    for attempt in range(int(os.environ.get("ARCTIC_ATTEMPTS", "4"))):
+    for attempt in range(int(os.environ.get("ARCTIC_ATTEMPTS", "5"))):
         time.sleep(delay if attempt else PACE)
+        t0 = time.time()
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "tcgtube-miner/0.2 (research, non-commercial)"})
             with urllib.request.urlopen(req, timeout=90) as r:
@@ -56,9 +63,15 @@ def get(params, log):
                 raise RuntimeError(d["error"])
             return d.get("data") or []
         except (urllib.error.HTTPError, urllib.error.URLError, RuntimeError, TimeoutError, OSError, json.JSONDecodeError) as e:
+            if time.time() - t0 > 7 and before_after_span(params) > 6 * 3600:
+                return SPLIT
             delay = min(120, max(10, delay * 2))
             log(f"   retry {attempt+1} in {delay:.0f}s: {str(e)[:80]}")
     return None  # give up on this window (caller may split)
+
+
+def before_after_span(params):
+    return int(params["before"]) - int(params["after"])
 
 
 def fetch_window(sub, q, after, before, log, depth=0):
@@ -67,8 +80,8 @@ def fetch_window(sub, q, after, before, log, depth=0):
     while True:
         rows = get({"subreddit": sub, "body": q, "limit": 100, "sort": "asc",
                     "after": cursor, "before": before, "fields": FIELDS}, log)
-        if rows is None:
-            if depth < 4 and before - cursor > 86400 * 2:
+        if rows is SPLIT or rows is None:
+            if depth < 7 and before - cursor > 6 * 3600:
                 mid = (cursor + before) // 2
                 log(f"   split window depth {depth+1}")
                 a = fetch_window(sub, q, cursor, mid, log, depth + 1)
@@ -96,7 +109,6 @@ def main():
     outdir = os.path.join(ROOT, "data", "vouches_arctic")
     os.makedirs(outdir, exist_ok=True)
     want = set(filter(None, args.subs.split(",")))
-    big = {"magicTCG", "EDH", "yugioh", "PokemonTCG"}
 
     def log(msg):
         print(time.strftime("%H:%M:%S"), msg, flush=True)
@@ -107,7 +119,7 @@ def main():
             continue
         done_path = os.path.join(outdir, f"{sub}.done")
         done = set(open(done_path).read().split()) if os.path.exists(done_path) else set()
-        step = args.step or (1 if sub in big else 3)
+        step = args.step or s.get("step", 1)
         ms = list(months(s["start"], args.until))
         log(f"== r/{sub}: {len(ms)} months, step {step}, {len(done)} windows done")
         with open(os.path.join(outdir, f"{sub}.jsonl"), "a") as out, open(done_path, "a") as dfh, \
