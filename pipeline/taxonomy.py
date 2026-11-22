@@ -45,7 +45,7 @@ FORMAT_RX = {g: [(f, re.compile(rx, re.I)) for f, rx in v] for g, v in FORMAT_RX
 
 # Order matters: first match wins.
 TYPE_RX = [
-    ("music", r"official (?:music )?video|\blyrics?\b|\bremix\b|monstercat|\bost\b|soundtrack|theme song|\bamv\b|extended mix|\bnightcore\b|music video|\bsong\b"),
+    ("music", r"official (?:music )?video|\blyrics?\b|\bremix\b|monstercat|\bost\b|soundtrack|theme song|\bamv\b|extended mix|\bnightcore\b|music video|\bsong\b|entrance theme|full album"),
     ("learn-to-play", r"how to play|learn to play|beginner|new player|getting started|how to start|your first|rules|tutorial|explained|basics|101\b|introduction|guide to|primer|for dummies"),
     ("coverage", r"\bvs\.?\b|versus|round \d|quarterfinal|semifinal|finals?\b|top 8|feature match|grand prix|\bgp\b|pro tour|\bscg\w*|regionals|nationals|worlds|invitational|championship|\bycs\b|\bwcq\b|calling|\bpt\b"),
     ("deck-tech", r"deck ?tech|decklist|deck list|deck guide|deck profile|budget deck|upgrad|primer|brew|\bdeck\b"),
@@ -93,7 +93,12 @@ def detect_format(game, title):
     return None
 
 
+MUSIC_CHANNEL = re.compile(r"(?:vevo| - topic|\bmusic|\brecords)$", re.I)
+
+
 def detect_type(title, channel=""):
+    if MUSIC_CHANNEL.search((channel or "").strip()):
+        return "music"
     text = f"{title} {channel}"
     for t, rx in TYPE_RX:
         if rx.search(text):

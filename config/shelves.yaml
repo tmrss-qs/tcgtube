@@ -48,12 +48,12 @@ shelves:
   - id: co25vcPvDsE
     note: null
     _title: 'The Power of Priority (and The Stack) | The Command Zone 267 | Magic: the Gathering EDH'
-  - id: s9C7JdSRZGc
-    note: null
-    _title: 'How To Build Every Commander Mana Base | The Definitive Guide | Magic: The Gathering'
   - id: zhm179k6oyk
     note: null
     _title: 'How To Irritate Magic: The Gathering Players at Commander: Zo-Zu The Punisher EDH'
+  - id: s9C7JdSRZGc
+    note: null
+    _title: 'How To Build Every Commander Mana Base | The Definitive Guide | Magic: The Gathering'
 - slug: coverage-moments
   title: Coverage moments people still link
   intro: Matches and plays that come up in threads years after they happened.
@@ -74,12 +74,12 @@ shelves:
   - id: KmouDgc9hD8
     note: null
     _title: 'Day[9] vs. Rob Simpson in Magic: The Gathering: Spellslingers Episode 1'
-  - id: O1ueErB8bms
-    note: null
-    _title: Pro Tour Magic 2015 - Quarterfinals - Yuuki Ichikawa vs. Jackson Cunningham
   - id: ybOKEUhCvDo
     note: null
     _title: SCGCIN - Leg - Rd 5 - Gerry Thompson vs Andrew Tompkins
+  - id: O1ueErB8bms
+    note: null
+    _title: Pro Tour Magic 2015 - Quarterfinals - Yuuki Ichikawa vs. Jackson Cunningham
   - id: LQMmmZgTL_Q
     note: null
     _title: 'SCGINVI - Deck Tech: Artificer''s Intuition with Greg Hatch'
@@ -91,21 +91,21 @@ shelves:
   - id: 3KFP_ESRz54
     note: null
     _title: How To Play Flesh And Blood (TCG) Learn To Play In Less Than 15 minutes!
-  - id: 416k-Rs8hgQ
-    note: null
-    _title: Flesh and Blood TCG - Learn to Play
-  - id: 7AbaxIgGYoo
-    note: null
-    _title: Flesh and Blood is a Fighting Game
-  - id: E7oMBq1vkCM
-    note: null
-    _title: Bobby Roode - Glorious Domination (Entrance Theme)
   - id: 8Wk78rhLdlA
     note: null
     _title: Which FaB Class Should You Play?
-  - id: hbccWsKY4cE
+  - id: 9F_HLRlZM-g
     note: null
-    _title: A Night at The Armory | Flesh and Blood TCG
+    _title: How to Determine Value in FaB
+  - id: 7AbaxIgGYoo
+    note: null
+    _title: Flesh and Blood is a Fighting Game
+  - id: 416k-Rs8hgQ
+    note: null
+    _title: Flesh and Blood TCG - Learn to Play
+  - id: ft-Qs-hQFwg
+    note: null
+    _title: The Value of a Card | FAB Foundations, Ep. 1
 - slug: pokemon-cards
   title: 'Pokémon cards: storing, grading, not getting scammed'
   intro: For collectors more than players.
@@ -117,18 +117,18 @@ shelves:
   - id: ZWZAx59eQOs
     note: null
     _title: How did Pokemon TCG get here?
-  - id: 3mYqTFQjx0s
-    note: null
-    _title: All Current Pokémon TCG Rarities Explained (Scarlet & Violet)
   - id: hf1cjsoQRRs
     note: null
     _title: Shaking Graded Pokemon Cards Causes DAMAGE?! Let’s Find Out
-  - id: j7hkmrk63xc
+  - id: 3mYqTFQjx0s
     note: null
-    _title: Digitally Peeking Inside a Pack of Pokemon Cards
+    _title: All Current Pokémon TCG Rarities Explained (Scarlet & Violet)
   - id: f5Qj6MigyRo
     note: null
     _title: How to order Japanese Pokemon Card 151 & Pokemon Products from Pokemon Center Japan!
+  - id: j7hkmrk63xc
+    note: null
+    _title: Digitally Peeking Inside a Pack of Pokemon Cards
 - slug: essays
   title: Long reads, but videos
   intro: Essays, design talks and histories worth an evening.
@@ -163,9 +163,6 @@ shelves:
   intro: The first videos people recommend for the other big games.
   draft: true
   videos:
-  - id: le3afxMnmd8
-    note: null
-    _title: Learn To Play Disney Lorcana w/Co-Designer Ryan Miller
   - id: s1QsMX9MwHA
     note: null
     _title: How To Play Yu-Gi-Oh! in 2020!
@@ -178,6 +175,9 @@ shelves:
   - id: m3Kaq_Q4ktc
     note: null
     _title: Yu-Gi-Oh! The Idiots Guide To Summoning (Normal, Ritual, Fusion, Synchro, Xyz, Pendulum)
+  - id: le3afxMnmd8
+    note: null
+    _title: Learn To Play Disney Lorcana w/Co-Designer Ryan Miller
   - id: 8jqRznO0NdU
     note: null
     _title: Yu-Gi-Oh! TRADING CARD GAME Official Rules Update - July 21st, 2017

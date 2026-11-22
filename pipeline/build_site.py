@@ -271,7 +271,7 @@ def build_coverage(cfg, cov, stats):
     drops = "".join(f'<tr><td>{e(k.replace("_", " "))}</td><td class="num">{n:,}</td></tr>' for k, n in stats.get("drops", {}).items())
     body = f"""<div class="prose"><h1>Coverage</h1>
 <p>What has been mined, so you can judge the gaps. Counts are Reddit comments linking a YouTube video (before filtering). Years shown {e(years[0] if years else '')}–{e(years[-1] if years else '')}.</p>
-<p>Games whose subreddits are not fully re-mined fall back to the first-pass counts from 2 Nov 2026, marked “first pass” in the index: {stats.get('legacy_fallback', 0):,} videos right now.</p></div>
+<p>Until every subreddit below is fully re-mined, videos that haven't qualified on re-mined data fall back to the first-pass counts from 2 Nov 2026 (≥3 different people), marked “first pass” in the index: {stats.get('legacy_fallback', 0):,} videos right now.</p></div>
 <table><thead><tr><th>Subreddit</th><th>Game</th><th>From</th><th>Status</th><th>Link-comments</th><th>By year</th></tr></thead><tbody>{rows}</tbody></table>
 <div class="prose"><h2>Qualified videos by game</h2></div><table style="max-width:420px"><tbody>{by_game}</tbody></table>
 <div class="prose"><h2>Filtered out</h2></div><table style="max-width:420px"><tbody>{drops}</tbody></table>"""

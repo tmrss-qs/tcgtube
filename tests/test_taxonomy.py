@@ -12,6 +12,8 @@ def test_format_type_level():
     c = t.classify("How To Build Your First Commander Deck | Magic: The Gathering", "Tolarian Community College", [])
     assert c["game"] == "MTG" and c["format"] == "Commander" and c["level"] == "beginner"
     assert t.detect_type("Noisestorm - Crab Rave [Monstercat Release]") == "music"
+    assert t.detect_type("Bobby Roode - Glorious Domination (Entrance Theme)", "WWE Music") == "music"
+    assert t.detect_type("Darude - Sandstorm", "Darude - Topic") == "music"
     assert t.detect_type("SCGLA - Legacy - Round 3 - Gregory Hatch vs Chris Kapica") == "coverage"
     assert t.detect_type("Shaking Graded Pokemon Cards Causes DAMAGE?!") == "collecting"
 

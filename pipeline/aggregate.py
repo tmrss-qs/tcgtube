@@ -151,8 +151,10 @@ def main(argv=None):
     log(f"pre-qualified (>= {min_v} people, >= {min_m} months): {len(pre):,} of {len(by_vid):,} vouched videos")
 
     # legacy fallback for games not fully re-mined
-    complete_games = {g for g in {s["game"] for s in cfg["subreddits"]}
-                      if all(c["complete"] for c in cov if c["game"] == g)}
+    # Vouches for any game can come from any subreddit (FAB videos get linked in r/magicTCG),
+    # so the first-pass fallback only switches off once EVERY configured subreddit is re-mined.
+    all_done = all(c["complete"] for c in cov)
+    complete_games = {s["game"] for s in cfg["subreddits"]} if all_done else set()
     legacy_path = os.path.join(DATA, "legacy.json")
     legacy = {r["video_id"]: r for r in json.load(open(legacy_path))} if os.path.exists(legacy_path) else {}
 
