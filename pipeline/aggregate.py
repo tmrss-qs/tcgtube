@@ -56,6 +56,8 @@ def load_vouches(cfg):
                 r = json.loads(line)
             except ValueError:
                 continue
+            if (r.get("subreddit") or "").lower() not in sub_game:
+                continue  # only subreddits in this corpus' config (keeps PM data out of TCG)
             k = (r.get("id"), r["video_id"])
             if k in seen:
                 continue

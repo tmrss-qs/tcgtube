@@ -1,11 +1,12 @@
-# PARKED: Product Management corpus. Not built or linked. Same engine; to revive,
-# copy to config/pm.yaml, fill in subreddits/taxonomy, and run with TCGTUBE_CONFIG=config/pm.yaml.
+# PM MINING CONFIG — used ONLY by `make pm-suggest` to produce a private review list
+# (data/pm_suggestions.md). /pm on the site is hand-curated from config/pm_shelves.yaml.
 name: TCGTube PM (parked)
 base_url: https://vault.tmrss.co/pm
 tagline: Product management videos people keep recommending.
 subreddits:
   - {name: ProductManagement, game: PM, start: 2012-01}
-  - {name: ExperiencedDevs, game: PM, start: 2018-01}
+  - {name: prodmgmt, game: PM, start: 2012-01}
+  - {name: startups, game: PM, start: 2010-01}
 ranking: {min_vouchers: 3, min_months: 3, count_stances: [recommend, cite], dated_after_years: 3}
 exclude_channels: {handles: ["@tmrss"], names: ["tmrss"]}
 deny_video_ids: [dQw4w9WgXcQ]

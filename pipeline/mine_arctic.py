@@ -101,12 +101,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subs", default="")
     ap.add_argument("--until", default=dt.date.today().strftime("%Y-%m"))
-    ap.add_argument("--step", type=int, default=0, help="months per window (0 = auto)")
+    ap.add_argument("--step", type=int, default=0, help="months per window (0 = config step or 1)")
+    ap.add_argument("--outdir", default=os.path.join(ROOT, "data", "vouches_arctic"))
     ap.add_argument("--refresh-recent", type=int, default=0,
                     help="re-fetch windows starting in the last N months even if done (weekly refresh)")
     args = ap.parse_args()
     cfg = load_config()
-    outdir = os.path.join(ROOT, "data", "vouches_arctic")
+    outdir = args.outdir
     os.makedirs(outdir, exist_ok=True)
     want = set(filter(None, args.subs.split(",")))
 

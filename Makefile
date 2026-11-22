@@ -1,6 +1,6 @@
 # TCGTube — one command to build: `make build`
 PY ?= .venv/bin/python
-.PHONY: setup build rank site test mine refresh serve clean
+.PHONY: setup build rank site test mine refresh serve clean pm-verify pm-suggest
 
 setup:            ## create venv + deps
 	python3 -m venv .venv && .venv/bin/pip install -q -r requirements.txt
@@ -26,6 +26,12 @@ mine: setup-if-needed     ## full (resumable) Arctic Shift mine; hours on first 
 
 refresh: setup-if-needed  ## weekly: re-mine the last 2 months, rank, build
 	./scripts/refresh.sh
+
+pm-verify: setup-if-needed  ## re-check /pm picks via oEmbed, refresh cached titles
+	$(PY) pipeline/pm.py verify
+
+pm-suggest: setup-if-needed ## mine PM subreddits -> data/pm_suggestions.md (review only, never published)
+	$(PY) pipeline/pm.py suggest
 
 serve:
 	python3 -m http.server 8000 -d site

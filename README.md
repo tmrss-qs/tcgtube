@@ -2,6 +2,8 @@
 
 **The YouTube videos the trading-card-game community keeps telling each other to watch.** It's an algorithm-free index mined from Reddit, inspired by Karpathy's [HackerTube](https://hackertube.org/). Magic, Pokémon, Yu-Gi-Oh!, Flesh and Blood, Lorcana and One Piece.
 
+Plus a small hand-curated product-management shelf at `/pm`.
+
 *Name is a placeholder. Target domain `vault.tmrss.co` is not deployed.*
 
 ## How a video gets in
@@ -54,6 +56,9 @@ Note: commits before v2 (`c4a75e8` and earlier) contain `site/tcg/data.js` with 
 | `YOUTUBE_API_KEY` | New videos get oEmbed metadata only: no duration (length filter skips them), no publish date. |
 | `TCGTUBE_LLM_PROVIDER` + `OPENAI_API_KEY`/`ANTHROPIC_API_KEY` | Stance labels come from heuristics, so expect more false "cite"s and the occasional joke getting through. |
 
-The PM corpus is parked (`config/pm.yaml.parked`). Build log: [`docs/BUILD-LOG.md`](docs/BUILD-LOG.md).
+## /pm — hand-curated
+
+`/pm` is Tom's curated product-management shelves from `config/pm_shelves.yaml` (DRAFT starter picks, each verified to exist via oEmbed). It is **not** mined. `make pm-verify` re-checks the ids; `make pm-suggest` mines PM subreddits into `data/pm_suggestions.md` for review only. Nothing from it is published unless Tom copies it into the YAML.
+ Build log: [`docs/BUILD-LOG.md`](docs/BUILD-LOG.md).
 
 MIT. See [LICENSE](LICENSE). The data is Reddit users' and YouTube creators'; this project is non-commercial, and the About page has the opt-out.

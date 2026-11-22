@@ -58,7 +58,7 @@ def ym(s):
 def page(cfg, title, body, *, active="", desc="", og_image=None, path="/", extra_head=""):
     base = cfg["base_url"].rstrip("/")
     full_title = f"{title} — {cfg['name']}" if title != cfg["name"] else cfg["name"]
-    nav = [("/", "Index", "index"), ("/shelves/", "Shelves", "shelves"), ("/about/", "About", "about"),
+    nav = [("/", "TCG", "index"), ("/shelves/", "Shelves", "shelves"), ("/pm/", "PM", "pm"), ("/about/", "About", "about"),
            ("/coverage/", "Coverage", "coverage"), ("/rss.xml", "RSS", "rss")]
     navh = "".join(f'<a href="{h}"{" class=on" if k == active else ""}>{t}</a>' for h, t, k in nav)
     og = (f'<meta property="og:type" content="website"><meta property="og:site_name" content="{e(cfg["name"])}">'
@@ -124,6 +124,46 @@ def build_index(cfg, videos, stats):
                 og_image=f"https://i.ytimg.com/vi/{videos[0]['id']}/hqdefault.jpg" if videos else None)
 
 
+PLAYER_JS = """<script>document.querySelector('#player button').addEventListener('click',function(){var id=this.getAttribute('data-id');if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title='YouTube video';var p=document.getElementById('player');p.textContent='';p.appendChild(f);});</script>"""
+
+
+def player(vid):
+    return (f'<div class="player" id="player"><button type="button" aria-label="Play video (loads YouTube)" data-id="{vid}">'
+            f'<img alt="" src="https://i.ytimg.com/vi/{vid}/hq2.jpg" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/{vid}/hqdefault.jpg\'">'
+            f'<span class="play">▶ Play</span></button></div>'
+            f'<div class="under"><span>Nothing loads from YouTube until you press play (youtube-nocookie).</span>'
+            f'<a href="https://www.youtube.com/watch?v={vid}" rel="noopener" target="_blank">Watch on YouTube ↗</a></div>')
+
+
+def build_pm(cfg, pm_doc):
+    """Hand-curated PM shelves: index page + one page per pick. Returns {relpath: html}."""
+    pages, parts = {}, []
+    for s in pm_doc.get("shelves", []):
+        vids = [v for v in s.get("videos", []) if ID_RE.match(str(v.get("id", ""))) and not v.get("dead")]
+        items = ""
+        for v in vids:
+            vid = v["id"]
+            items += (f'<li><a href="/pm/v/{vid}/">{thumb(vid, d=v.get("duration_s"))}</a><div><a class="card" href="/pm/v/{vid}/"><div class="t">{e(v.get("title"))}</div></a>'
+                      f'<div class="ch">{e(v.get("channel"))}</div>' + (f'<div class="note">{e(v["note"])}</div>' if v.get("note") else "") + "</div></li>")
+            others = "".join(f'<a class="mini" href="/pm/v/{o["id"]}/">{thumb(o["id"], d=o.get("duration_s"))}<div><div class="t">{e(o.get("title"))}</div>'
+                             f'<div class="m">{e(o.get("channel"))}</div></div></a>' for o in vids if o["id"] != vid)
+            meta = "".join(f"<span>{e(x)}</span>" for x in [v.get("channel"), dur(v.get("duration_s")) or None, s["title"]] if x)
+            note = f'<p class="stat">{e(v["note"])}</p>' if v.get("note") else ""
+            draft = '<div class="draft">DRAFT PICK — Tom to confirm or replace</div>' if s.get("draft") else ""
+            body = (f'<div class="crumb"><a href="/pm/">PM</a> / <a href="/pm/#{e(s["slug"])}">{e(s["title"])}</a></div><div class="v-layout"><div>'
+                    f'<div class="v-head"><h1>{e(v.get("title"))}</h1></div><div class="v-meta">{meta}</div>{draft}{player(vid)}{note}</div>'
+                    f'<aside class="side"><h3>Also on this shelf</h3>{others or "<p class=m>—</p>"}</aside></div>{PLAYER_JS}')
+            pages[f"pm/v/{vid}/index.html"] = page(cfg, v.get("title") or vid, body, active="pm", path=f"/pm/v/{vid}/",
+                                                   desc=v.get("note") or f'On the “{s["title"]}” shelf.', og_image=f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg")
+        draft = '<div class="draft">DRAFT STARTER PICKS — for Tom to edit in config/pm_shelves.yaml</div>' if s.get("draft") else ""
+        parts.append(f'<section class="shelf" id="{e(s["slug"])}"><h2>{e(s["title"])}</h2>{draft}<p class="intro">{e(s.get("intro", ""))}</p><ol>{items}</ol></section>')
+    intro = ('<div class="prose"><h1>Product management</h1><p>A small, hand-picked shelf of product management videos worth your time. '
+             'Unlike the TCG index this is curated, not mined: every pick is chosen and ordered by hand.</p></div>')
+    pages["pm/index.html"] = page(cfg, "Product management", intro + "".join(parts), active="pm", path="/pm/",
+                                  desc="Hand-curated product management videos: foundations, discovery, strategy, AI product.")
+    return pages
+
+
 def build_video(cfg, v, index):
     vid = v["id"]
     g = GAME_LABEL.get(v["game"], v["game"])
@@ -155,13 +195,11 @@ def build_video(cfg, v, index):
             (f' / <a href="/?g={e(v["game"])}&amp;f={e(v["format"])}">{e(v["format"])}</a>' if v["format"] else "") + "</div>"
     body = f"""{crumb}<div class="v-layout"><div>
 <div class="v-head"><h1>{e(v['title'])}</h1></div><div class="v-meta">{meta}</div>
-<div class="player" id="player"><button type="button" aria-label="Play video (loads YouTube)" data-id="{vid}">
-<img alt="" src="https://i.ytimg.com/vi/{vid}/hq2.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{vid}/hqdefault.jpg'"><span class="play">▶ Play</span></button></div>
-<div class="under"><span>Nothing loads from YouTube until you press play (youtube-nocookie).</span><a href="https://www.youtube.com/watch?v={vid}" rel="noopener" target="_blank">Watch on YouTube ↗</a></div>
+{player(vid)}
 {stat}
 {quotes}
 </div><aside class="side"><h3>People who recommended this also recommended</h3>{also or '<p class="m">—</p>'}</aside></div>
-<script>document.querySelector('#player button').addEventListener('click',function(){{var id=this.getAttribute('data-id');if(!/^[A-Za-z0-9_-]{{11}}$/.test(id))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title='YouTube video';var p=document.getElementById('player');p.textContent='';p.appendChild(f);}});</script>"""
+{PLAYER_JS}"""
     desc = v["quotes"][0]["q"] if v["quotes"] else f'Recommended by {v["vouchers"]} people in the TCG community.'
     return page(cfg, v["title"], body, path=f"/v/{vid}/", desc=desc, og_image=f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg")
 
@@ -202,6 +240,7 @@ def build_about(cfg, stats):
 <li>Dropped: bots, people linking their own channel, music and memes, Shorts, deleted or private videos.</li>
 <li>Deck techs, set reviews and price videos are marked <i>dated</i> once they are a couple of years old and hidden by default.</li>
 </ul>
+<p>The <a href="/pm/">PM</a> section works differently: it is a short, hand-curated list, not mined.</p>
 <h2>Data and privacy</h2>
 <ul>
 <li>Reddit data comes from the Arctic Shift archive (and, for first-pass counts, the Pushshift dumps). We publish video IDs, counts, and short quotes (200 characters at most) that link back to the original thread. We never publish usernames.</li>
@@ -310,6 +349,10 @@ def main():
     write("about/index.html", build_about(cfg, stats))
     write("coverage/index.html", build_coverage(cfg, cov, stats))
     write("rss.xml", build_rss(cfg, videos, today))
+    pm_path = os.path.join(ROOT, "config", "pm_shelves.yaml")
+    pm_doc = yaml.safe_load(open(pm_path)) if os.path.exists(pm_path) else {"shelves": []}
+    for rel, html_ in build_pm(cfg, pm_doc).items():
+        write(rel, html_)
     write("404.html", page(cfg, "Not found", '<div class="prose"><h1>Not here.</h1><p><a href="/">Back to the index</a>.</p></div>', desc="Not found"))
     print(f"site -> {OUT}: {len(videos):,} videos, {len(videos):,} video pages" + (f"; shelf ids not in corpus: {missing}" if missing else ""))
 
